@@ -1,9 +1,9 @@
 
 -- Crear la base de datos
-CREATE DATABASE GestionPedidos;
+CREATE DATABASE gestionpedidos;
 
 -- Usar la base de datos recién creada
-\c GestionPedidos;
+\c gestionpedidos;
 
 -- Crear la tabla clientes
 CREATE TABLE IF NOT EXISTS clientes (
