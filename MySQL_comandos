@@ -1,0 +1,59 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS GestionLibros;
+
+-- Usar la base de datos recién creada
+USE GestionLibros;
+
+-- Crear la tabla categorias
+CREATE TABLE IF NOT EXISTS categorias (
+    id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL
+);
+
+-- Crear la tabla autores
+CREATE TABLE IF NOT EXISTS autores (
+    id_autor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
+    nacionalidad VARCHAR(100),
+    fecha_nacimiento DATE
+);
+
+-- Crear la tabla libros
+CREATE TABLE IF NOT EXISTS libros (
+    id_libro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    id_categoria INT,
+    id_autor INT,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+);
+
+-- Insertar valores de prueba en la tabla autores
+INSERT INTO autores (nombre, nacionalidad, fecha_nacimiento) VALUES
+('Autor 1', 'Peruano', '1970-01-15'),
+('Autor 2', 'Mexicano', '1985-03-22'),
+('Autor 3', 'Argentino', '1990-05-11'),
+('Autor 4', 'Chileno', '1980-08-05'),
+('Autor 5', 'Colombiano', '1975-12-09');
+
+-- Insertar valores de prueba en la tabla categorias
+INSERT INTO categorias (nombre) VALUES
+('Novela'),
+('Ciencia Ficción'),
+('Fantasía'),
+('Historia'),
+('Ciencia');
+
+-- Insertar valores de prueba en la tabla libros
+INSERT INTO libros (titulo, precio, id_categoria, id_autor) VALUES
+('Libro A', 25.99, 1, 1),
+('Libro B', 30.50, 2, 2),
+('Libro C', 15.00, 3, 3),
+('Libro D', 45.20, 1, 4),
+('Libro E', 20.00, 4, 5),
+('Libro F', 50.75, 5, 1),
+('Libro G', 10.99, 2, 2),
+('Libro H', 60.00, 3, 3),
+('Libro I', 35.40, 4, 4),
+('Libro J', 40.00, 5, 5);
