@@ -1,0 +1,23 @@
+// Selecciona la base de datos "reviews"
+use reviews
+
+// Crea la colección "book_reviews"
+db.createCollection("book_reviews")
+
+// Inserta 10 registros de reseñas falsas en la colección "book_reviews"
+// Aquí nos aseguramos de usar los IDs de libros y clientes que ya están en PostgreSQL y MySQL
+db.book_reviews.insertMany([
+    {id_libro: "1", id_cliente: 1, puntuacion: 5, resena: "Amazing book, highly recommend!", fecha: new Date("2024-01-01")},
+    {id_libro: "2", id_cliente: 2, puntuacion: 4, resena: "Great read, a bit slow in the middle.", fecha: new Date("2024-01-02")},
+    {id_libro: "3", id_cliente: 3, puntuacion: 3, resena: "Good book but not what I expected.", fecha: new Date("2024-01-03")},
+    {id_libro: "4", id_cliente: 4, puntuacion: 5, resena: "Incredible story and characters!", fecha: new Date("2024-01-04")},
+    {id_libro: "5", id_cliente: 5, puntuacion: 2, resena: "I didn't enjoy this book much.", fecha: new Date("2024-01-05")},
+    {id_libro: "6", id_cliente: 6, puntuacion: 3, resena: "It was an okay read, nothing special.", fecha: new Date("2024-01-06")},
+    {id_libro: "7", id_cliente: 7, puntuacion: 4, resena: "A solid book with a good plot.", fecha: new Date("2024-01-07")},
+    {id_libro: "8", id_cliente: 8, puntuacion: 5, resena: "One of the best books I have ever read!", fecha: new Date("2024-01-08")},
+    {id_libro: "9", id_cliente: 9, puntuacion: 1, resena: "I couldn't finish this book, very slow.", fecha: new Date("2024-01-09")},
+    {id_libro: "10", id_cliente: 10, puntuacion: 5, resena: "A masterpiece, absolutely loved it!", fecha: new Date("2024-01-10")}
+])
+
+// Consulta los datos insertados
+db.book_reviews.find().pretty()
